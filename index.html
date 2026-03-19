@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechPath — Descubra sua carreira ideal em tecnologia</title>
+  <meta name="description" content="Faça o teste vocacional gratuito e descubra em qual área da tecnologia você tem mais potencial: Frontend, Backend, Data Science, DevOps, Cybersecurity ou UX Design." />
+  <meta name="keywords" content="teste vocacional tecnologia, carreira tech, frontend backend data science devops ux, qual área de TI escolher" />
+  <meta property="og:title" content="TechPath — Descubra sua carreira ideal em tecnologia" />
+  <meta property="og:description" content="Teste vocacional gratuito para tecnologia. Resultado instantâneo e plano personalizado." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!--
+    GOOGLE ADSENSE — cole seu script abaixo quando for publicar:
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  -->
+</head>
+<body>
+
+<!-- =============================================
+     NAVBAR
+============================================= -->
+<nav class="navbar">
+  <div class="navbar-brand">Tech<span>Path</span></div>
+  <div class="navbar-links">
+    <a href="#" onclick="showPage('home')">Início</a>
+    <a href="#" onclick="showPage('about')">Sobre</a>
+    <a href="#" onclick="showPage('privacy')">Privacidade</a>
+  </div>
+</nav>
+
+
+<!-- =============================================
+     PÁGINA HOME
+============================================= -->
+<div id="page-home">
+  <div class="container">
+
+    <!-- Anúncio topo — substitua pelo bloco <ins> do AdSense -->
+    <div class="ad-slot" aria-label="Publicidade">Publicidade</div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">✦ Teste Gratuito · Resultado Instantâneo</div>
+      <h1>Descubra qual carreira em <em>tecnologia</em> combina com você</h1>
+      <p class="hero-sub">15 perguntas. Resultado em menos de 3 minutos. Plano personalizado para você começar hoje.</p>
+      <div class="hero-cta-group">
+        <button class="btn btn-primary" onclick="startQuiz()">Começar teste grátis ↗</button>
+        <a href="#benefits" class="btn btn-secondary">Como funciona</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">48k+</div><div class="stat-label">testes realizados</div></div>
+        <div class="stat"><div class="stat-num">6</div><div class="stat-label">áreas mapeadas</div></div>
+        <div class="stat"><div class="stat-num">3 min</div><div class="stat-label">para concluir</div></div>
+      </div>
+    </section>
+
+    <!-- Anúncio meio -->
+    <div class="ad-slot" aria-label="Publicidade">Publicidade</div>
+
+    <!-- BENEFÍCIOS -->
+    <section class="benefits" id="benefits">
+      <h2>Por que fazer o TechPath?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🎯</div>
+          <h3>Descubra sua área ideal</h3>
+          <p>Identifique onde seu perfil se encaixa melhor: frontend, backend, dados, DevOps, segurança ou UX.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">⏱</div>
+          <h3>Evite estudar errado</h3>
+          <p>Pare de consumir conteúdo aleatório. Saiba exatamente onde focar seu tempo e energia.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🗺</div>
+          <h3>Tenha um plano claro</h3>
+          <p>Receba um roadmap personalizado com os próximos passos para entrar no mercado.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💸</div>
+          <h3>Maximize seus ganhos</h3>
+          <p>Conheça as áreas mais valorizadas e as habilidades que mais pagam no mercado atual.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anúncio final home -->
+    <div class="ad-slot" aria-label="Publicidade">Publicidade</div>
+
+    <div class="text-center mt-md" style="margin-bottom: 60px;">
+      <button class="btn btn-primary pulse" onclick="startQuiz()">Quero descobrir minha área →</button>
+      <p class="mt-sm" style="font-size:.8rem;color:var(--text-muted);">100% gratuito · Sem cadastro necessário</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- =============================================
+     PÁGINA QUIZ
+============================================= -->
+<div id="page-quiz" class="hidden">
+  <div class="container">
+    <div class="quiz-header">
+
+      <!-- Barra de progresso -->
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+        <span class="quiz-progress-label" id="progress-label">0 / 15</span>
+      </div>
+
+      <!-- Card da pergunta (preenchido via JS) -->
+      <div class="quiz-card">
+        <div class="quiz-question-num" id="q-num">Pergunta 1 de 15</div>
+        <div class="quiz-question-text" id="q-text"></div>
+        <div class="quiz-options" id="q-options"></div>
+        <div class="quiz-nav">
+          <button class="btn btn-secondary" id="btn-back" onclick="prevQuestion()">← Voltar</button>
+          <button class="btn btn-primary"   id="btn-next" onclick="nextQuestion()" disabled>Próxima →</button>
+        </div>
+      </div>
+
+      <!-- Anúncio abaixo do quiz -->
+      <div class="ad-slot" aria-label="Publicidade" style="margin-top:24px;">Publicidade</div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- =============================================
+     PÁGINA DE ANÁLISE — MELHORIA 1
+     Tela intermediária que simula IA analisando o perfil.
+     Aparece entre o quiz e o resultado, dura ~3 segundos.
+     Aumenta o valor percebido do resultado.
+============================================= -->
+<div id="page-analysis" class="hidden">
+  <div class="container">
+    <div class="analysis-wrap">
+
+      <!-- Spinner animado com ícone central -->
+      <div class="analysis-spinner">
+        <span class="analysis-spinner-icon">🧠</span>
+      </div>
+
+      <h2 class="analysis-title">Analisando seu perfil...</h2>
+      <p class="analysis-subtitle">Nossa IA está mapeando suas respostas com padrões de carreira em tecnologia</p>
+
+      <!-- Etapas que aparecem uma a uma (controladas pelo JS) -->
+      <div class="analysis-steps" id="analysis-steps">
+        <div class="analysis-step" data-step="0">
+          <span class="analysis-step-icon">·</span>
+          Analisando suas respostas
+        </div>
+        <div class="analysis-step" data-step="1">
+          <span class="analysis-step-icon">·</span>
+          Comparando com padrões de carreira em tecnologia
+        </div>
+        <div class="analysis-step" data-step="2">
+          <span class="analysis-step-icon">·</span>
+          Calculando scores de compatibilidade
+        </div>
+        <div class="analysis-step" data-step="3">
+          <span class="analysis-step-icon">·</span>
+          Gerando seu caminho de carreira personalizado
+        </div>
+      </div>
+
+      <!-- Barra de progresso da análise -->
+      <div class="analysis-progress-wrap">
+        <div class="analysis-progress-label">
+          <span>Processando</span>
+          <span id="analysis-pct">0%</span>
+        </div>
+        <div class="analysis-bar-bg">
+          <div class="analysis-bar-fill" id="analysis-bar"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- =============================================
+     PÁGINA RESULTADO
+============================================= -->
+<div id="page-result" class="hidden">
+  <div class="container">
+
+    <!-- Hero: área vencedora -->
+    <div class="result-hero">
+      <div class="result-rarity" id="result-rarity"></div>
+      <div class="result-area-name" id="result-title"></div>
+      <p class="result-description" id="result-desc"></p>
+    </div>
+
+    <!-- RANKING DE COMPATIBILIDADE — MELHORIA 2
+         Mostra todas as áreas ordenadas por %, com destaque para a 1ª.
+         Preenchido via JS em showResult().
+    -->
+    <div class="ranking-section" id="result-scores">
+      <!-- JS insere aqui o título e as linhas de score -->
+    </div>
+
+    <!-- Anúncio entre ranking e seção bloqueada -->
+    <div class="ad-slot" aria-label="Publicidade">Publicidade</div>
+
+    <!-- SEÇÃO BLOQUEADA MELHORADA — MELHORIA 3
+         Preview desfocado com fases do roadmap + overlay com CTA.
+    -->
+    <div class="locked-section">
+      <!-- Conteúdo desfocado que aguça a curiosidade -->
+      <div class="locked-content-preview">
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div><h4>Fase 1 — Fundamentos (primeiros 30 dias)</h4><p>Bases sólidas da sua área escolhida com projetos práticos desde o dia 1</p></div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div><h4>Fase 2 — Projetos para portfólio</h4><p>3 projetos reais selecionados para impressionar recrutadores</p></div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div><h4>Fase 3 — Ferramentas usadas por profissionais</h4><p>Stack exata que o mercado valoriza e paga mais</p></div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-dot"></div>
+          <div><h4>Fase 4 — Como conseguir seu primeiro emprego em tech</h4><p>Currículo, LinkedIn, entrevistas técnicas e onde procurar vagas</p></div>
+        </div>
+      </div>
+
+      <!-- Overlay com CTA -->
+      <div class="locked-overlay">
+        <div class="locked-icon">🔒</div>
+        <div class="locked-title">Desbloqueie seu roadmap de carreira personalizado</div>
+        <p class="locked-sub">Tudo o que você precisa para sair do zero e entrar no mercado de tecnologia em até 6 meses.</p>
+      </div>
+    </div>
+
+    <!-- BENEFÍCIOS DO PLANO — MELHORIA 3
+         Lista de entregáveis que aumentam o valor percebido do produto.
+    -->
+    <div class="plan-benefits">
+      <div class="plan-benefits-title">O que você recebe no plano completo:</div>
+      <div class="plan-benefit-item">
+        <span class="plan-check">✔</span>
+        <span>Roadmap completo de aprendizado para a sua área</span>
+      </div>
+      <div class="plan-benefit-item">
+        <span class="plan-check">✔</span>
+        <span>Ideias de projetos para portfólio que chamam atenção de recrutadores</span>
+      </div>
+      <div class="plan-benefit-item">
+        <span class="plan-check">✔</span>
+        <span>Ferramentas e recursos recomendados por profissionais da área</span>
+      </div>
+      <div class="plan-benefit-item">
+        <span class="plan-check">✔</span>
+        <span>Plano de estudos de 6 meses com metas semanais</span>
+      </div>
+      <div class="plan-benefit-item">
+        <span class="plan-check">✔</span>
+        <span>Guia passo a passo para conseguir seu primeiro emprego em tech</span>
+      </div>
+    </div>
+
+    <!-- PROVA SOCIAL — MELHORIA 5 -->
+    <div class="social-proof">
+      <span class="social-proof-icon">👥</span>
+      <div class="social-proof-text">
+        <strong>+300 pessoas</strong> acessaram o plano de carreira completo essa semana.
+      </div>
+    </div>
+
+    <!-- URGÊNCIA -->
+    <div class="urgency-box">
+      <span class="urgency-icon">⚡</span>
+      <div class="urgency-text">
+        <h4>Oferta especial — hoje</h4>
+        <p>Garanta o seu plano antes que o preço volte ao valor original.</p>
+      </div>
+    </div>
+
+    <!-- PREÇO -->
+    <div class="price-row">
+      <span class="price-old">R$ 97</span>
+      <span class="price-new">R$ 47</span>
+      <span class="price-period">/ acesso vitalício</span>
+    </div>
+
+    <!-- BOTÃO DE COMPRA MELHORADO — MELHORIA 4
+         Troque o href pelo seu link real (Kiwify, Hotmart, etc.)
+    -->
+    <a href="https://seulink.kiwify.com.br" target="_blank" rel="noopener" class="btn btn-unlock">
+      🚀 Ver Meu Roadmap Completo
+    </a>
+    <p class="guarantee">🛡 Garantia de 7 dias · Pagamento 100% seguro · Acesso imediato</p>
+
+    <!-- Anúncio final resultado -->
+    <div class="ad-slot" aria-label="Publicidade" style="margin-top:40px;">Publicidade</div>
+
+    <div class="text-center mt-md" style="margin-bottom: 48px;">
+      <button class="btn btn-secondary" onclick="restartQuiz()">↩ Refazer o teste</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- =============================================
+     PÁGINA POLÍTICA DE PRIVACIDADE
+============================================= -->
+<div id="page-privacy" class="hidden">
+  <div class="container">
+    <div class="legal-page">
+      <h1>Política de Privacidade</h1>
+      <p>Última atualização: Janeiro de 2025</p>
+
+      <h2>1. Coleta de Informações</h2>
+      <p>O TechPath não coleta dados pessoais identificáveis durante a realização do teste. As respostas são processadas localmente no seu navegador e não são enviadas a nossos servidores.</p>
+      <p>Podemos coletar dados de uso anônimos por meio de ferramentas de análise (como Google Analytics) para melhorar a experiência do site.</p>
+
+      <h2>2. Cookies e Tecnologias de Rastreamento</h2>
+      <p>Utilizamos cookies para fins de análise e exibição de publicidade personalizada pelo Google AdSense. Os cookies do AdSense podem coletar dados para exibir anúncios relevantes aos visitantes.</p>
+      <p>Você pode desativar cookies nas configurações do seu navegador, mas isso pode afetar a funcionalidade do site.</p>
+
+      <h2>3. Google AdSense</h2>
+      <p>Este site utiliza o Google AdSense para exibir anúncios. O Google pode usar cookies DART para exibir anúncios baseados em visitas anteriores dos usuários a este e outros sites. Saiba mais em: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">policies.google.com</a>.</p>
+
+      <h2>4. Compartilhamento de Dados</h2>
+      <p>Não vendemos, trocamos ou transferimos suas informações pessoais a terceiros. Isso não inclui parceiros de hospedagem e outros terceiros que nos assistem na operação do site, desde que concordem em manter essas informações confidenciais.</p>
+
+      <h2>5. Links Externos</h2>
+      <p>Este site pode conter links para sites externos. Não somos responsáveis pelas práticas de privacidade de outros sites.</p>
+
+      <h2>6. Alterações nesta Política</h2>
+      <p>Podemos atualizar esta política periodicamente. Recomendamos que você revise esta página regularmente.</p>
+
+      <h2>7. Contato</h2>
+      <p>Dúvidas? <a href="mailto:contato@techpath.com.br">contato@techpath.com.br</a></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- =============================================
+     PÁGINA TERMOS DE USO
+============================================= -->
+<div id="page-terms" class="hidden">
+  <div class="container">
+    <div class="legal-page">
+      <h1>Termos de Uso</h1>
+      <p>Última atualização: Janeiro de 2025</p>
+
+      <h2>1. Aceitação dos Termos</h2>
+      <p>Ao acessar e usar o TechPath, você concorda com estes Termos de Uso. Se não concordar com qualquer parte, não utilize o serviço.</p>
+
+      <h2>2. Descrição do Serviço</h2>
+      <p>O TechPath oferece um teste vocacional informativo para a área de tecnologia. Os resultados são orientativos e não constituem aconselhamento profissional.</p>
+
+      <h2>3. Uso Aceitável</h2>
+      <ul>
+        <li>Usar o site apenas para fins legais e pessoais.</li>
+        <li>Não tentar comprometer a segurança ou o funcionamento do site.</li>
+        <li>Não reproduzir, distribuir ou explorar comercialmente o conteúdo sem autorização.</li>
+      </ul>
+
+      <h2>4. Isenção de Responsabilidade</h2>
+      <p>O teste vocacional é fornecido "como está", sem garantias de qualquer tipo. Não nos responsabilizamos por decisões tomadas com base nos resultados do teste.</p>
+
+      <h2>5. Propriedade Intelectual</h2>
+      <p>Todo o conteúdo do site (textos, design, código) é de propriedade do TechPath e protegido por direitos autorais.</p>
+
+      <h2>6. Alterações</h2>
+      <p>Reservamos o direito de modificar estes termos a qualquer momento. O uso continuado do site após alterações implica aceitação dos novos termos.</p>
+
+      <h2>7. Contato</h2>
+      <p>Dúvidas? <a href="mailto:contato@techpath.com.br">contato@techpath.com.br</a></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- =============================================
+     PÁGINA SOBRE
+============================================= -->
+<div id="page-about" class="hidden">
+  <div class="container">
+    <div class="legal-page">
+      <h1>Sobre o TechPath</h1>
+      <p>O TechPath nasceu de uma necessidade real: a maioria das pessoas que quer entrar na tecnologia não sabe por onde começar — e acaba perdendo meses estudando a coisa errada.</p>
+
+      <h2>Nossa missão</h2>
+      <p>Ajudar profissionais e estudantes a identificar rapidamente qual área da tecnologia combina mais com seu perfil, evitando tempo e dinheiro desperdiçados.</p>
+
+      <h2>Como funciona</h2>
+      <p>Nosso teste mapeia seu perfil em 6 grandes áreas da tecnologia:</p>
+      <ul>
+        <li><strong>Frontend Development</strong> — interfaces e experiência visual</li>
+        <li><strong>Backend Development</strong> — lógica, servidores e APIs</li>
+        <li><strong>Data Science</strong> — análise de dados e inteligência artificial</li>
+        <li><strong>DevOps &amp; Cloud</strong> — infraestrutura e automação</li>
+        <li><strong>Cybersecurity</strong> — segurança e proteção de sistemas</li>
+        <li><strong>UX Design</strong> — pesquisa e design de produtos digitais</li>
+      </ul>
+
+      <h2>Quem fez o TechPath?</h2>
+      <p>Somos uma equipe apaixonada por educação em tecnologia, comprometida em democratizar o acesso a orientação de carreira de qualidade.</p>
+
+      <h2>Contato</h2>
+      <p>Email: <a href="mailto:contato@techpath.com.br">contato@techpath.com.br</a></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- =============================================
+     FOOTER
+============================================= -->
+<footer>
+  <div class="footer-brand">Tech<span style="color:var(--purple-lt)">Path</span></div>
+  <div class="footer-links">
+    <a href="#" onclick="showPage('home')">Início</a>
+    <a href="#" onclick="showPage('about')">Sobre</a>
+    <a href="#" onclick="showPage('privacy')">Política de Privacidade</a>
+    <a href="#" onclick="showPage('terms')">Termos de Uso</a>
+  </div>
+  <p class="footer-disclaimer">
+    Este site utiliza cookies para análise e exibição de anúncios pelo Google AdSense.
+    Os resultados do teste são orientativos e não constituem aconselhamento profissional.
+  </p>
+  <p class="footer-copy">© 2025 TechPath. Todos os direitos reservados.</p>
+</footer>
+
+
+<!-- Script externo — ao final do body para não bloquear a renderização -->
+<script src="quiz.js"></script>
+
+</body>
+</html>
