@@ -64,7 +64,7 @@ Criar uma solução simples e escalável para ajudar iniciantes a entrarem na á
 
 ## 🌐 Deploy
 
-Em breve..
+[Acessar o site](https://techpath-xi.vercel.app/)
 
 ---
 
