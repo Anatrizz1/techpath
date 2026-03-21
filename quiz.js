@@ -406,18 +406,36 @@ function runAnalysis() {
   }, 3300);
 }
 
-/* -----------------------------------------------
-   CALCULAR E EXIBIR RESULTADO — MELHORIA 2
-   Ranking com posição numérica e % de compatibilidade.
-   Barra animada com delay para efeito visual.
------------------------------------------------ */
+
+/* Máximo possível por área (pré-calculado)
+   = soma da melhor pontuação de cada área
+     em cada pergunta do quiz              */
+const maxScores = {
+  frontend:      36,
+  backend:       45,
+  data:          43,
+  devops:        25,
+  cybersecurity: 33,
+  ux:            32,
+};
+
 function showResult() {
   // Categoria vencedora
   const winner = Object.entries(scores).reduce((a, b) => b[1] > a[1] ? b : a)[0];
   const res    = results[winner];
 
-  // Soma total para calcular percentagens (mínimo 1 para evitar /0)
-  const totalRaw = Object.values(scores).reduce((a, b) => a + b, 0) || 1;
+  // ── Percentual relativo ao máximo possível ──
+  // Cada área mostra: pontos_obtidos / máximo_possível * 100
+  // Garante que quem é claramente frontend veja 80-95%, não 52%.
+  const rawPcts = Object.fromEntries(
+    Object.entries(scores).map(([cat, val]) => [
+      cat,
+      Math.min(100, Math.round((val / maxScores[cat]) * 100))
+    ])
+  );
+
+  // Ordena por % decrescente para o ranking
+  const sorted = Object.entries(rawPcts).sort((a, b) => b[1] - a[1]);
 
   // ── Hero ──────────────────────────────────────
   document.getElementById('result-rarity').textContent = res.rarity;
@@ -425,22 +443,6 @@ function showResult() {
   document.getElementById('result-desc').textContent   = res.description;
 
   // ── Ranking de compatibilidade ─────────────────
-  // Ordena categorias da maior para a menor pontuação
-  const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-
-  // Cada % = pontos_da_área / total_de_todos_os_pontos
-  // → a soma dos percentuais sempre fecha exatamente em 100%.
-  // Algoritmo "largest remainder" garante que o arredondamento
-  // não cause soma de 99% ou 101%.
-  const rawPcts = sorted.map(([, val]) => (val / totalRaw) * 100);
-  const floored = rawPcts.map(p => Math.floor(p));
-  const deficit = 100 - floored.reduce((a, b) => a + b, 0);
-  rawPcts
-    .map((p, i) => ({ i, dec: p - Math.floor(p) }))
-    .sort((a, b) => b.dec - a.dec)
-    .slice(0, deficit)
-    .forEach(({ i }) => floored[i]++);
-
   const medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣', '6️⃣'];
 
   const scoreContainer = document.getElementById('result-scores');
@@ -449,10 +451,8 @@ function showResult() {
       Seu ranking de compatibilidade <span>— baseado nas suas respostas</span>
     </div>`;
 
-  sorted.forEach(([cat], idx) => {
-    const pct   = floored[idx];
+  sorted.forEach(([cat, pct], idx) => {
     const isTop = cat === winner;
-
     scoreContainer.innerHTML += `
       <div class="score-row">
         <span class="score-position ${isTop ? 'first' : ''}">${medals[idx]}</span>
@@ -467,9 +467,8 @@ function showResult() {
       </div>`;
   });
 
-  // Anima as barras com delay escalonado (efeito cascata)
-  sorted.forEach(([cat], idx) => {
-    const pct = floored[idx];
+  // Anima as barras com delay escalonado
+  sorted.forEach(([cat, pct], idx) => {
     setTimeout(() => {
       const bar = document.getElementById('bar-' + cat);
       if (bar) bar.style.width = pct + '%';

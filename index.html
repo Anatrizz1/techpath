@@ -141,7 +141,7 @@
 
 
 <!-- =============================================
-     PÁGINA DE ANÁLISE — MELHORIA 1
+     PÁGINA DE ANÁLISE 
      Tela intermediária que simula IA analisando o perfil.
      Aparece entre o quiz e o resultado, dura ~3 segundos.
      Aumenta o valor percebido do resultado.
@@ -207,7 +207,7 @@
       <p class="result-description" id="result-desc"></p>
     </div>
 
-    <!-- RANKING DE COMPATIBILIDADE — MELHORIA 2
+    <!-- RANKING DE COMPATIBILIDADE 
          Mostra todas as áreas ordenadas por %, com destaque para a 1ª.
          Preenchido via JS em showResult().
     -->
@@ -215,97 +215,237 @@
       <!-- JS insere aqui o título e as linhas de score -->
     </div>
 
-    <!-- Anúncio entre ranking e seção bloqueada -->
-    <div class="ad-slot" aria-label="Publicidade">Publicidade</div>
 
-    <!-- SEÇÃO BLOQUEADA MELHORADA — MELHORIA 3
+    <!-- SEÇÃO BLOQUEADA MELHORADA 
          Preview desfocado com fases do roadmap + overlay com CTA.
     -->
-    <div class="locked-section">
-      <!-- Conteúdo desfocado que aguça a curiosidade -->
-      <div class="locked-content-preview">
-        <div class="roadmap-item">
-          <div class="roadmap-dot"></div>
-          <div><h4>Fase 1 — Fundamentos (primeiros 30 dias)</h4><p>Bases sólidas da sua área escolhida com projetos práticos desde o dia 1</p></div>
+
+    <!-- AD SLOT -->
+    <div class="ad-slot" aria-label="Publicidade">Publicidade</div>
+
+    <!-- ── SEÇÃO DE VENDAS ─────────────────────── -->
+    <div class="sales-section">
+
+      <!-- Transição suave do resultado para a venda -->
+      <div class="sales-bridge">
+        <div class="sales-bridge-line"></div>
+        <span class="sales-bridge-text">Seu plano de carreira está pronto</span>
+        <div class="sales-bridge-line"></div>
+      </div>
+
+      <!-- Headline principal -->
+      <div class="sales-hero">
+        <div class="sales-tag">🎯 Exclusivo para o seu perfil</div>
+        <h2 class="sales-headline">
+          Do zero à primeira vaga em tecnologia —<br>
+          <em>com um plano que realmente funciona</em>
+        </h2>
+        <p class="sales-sub">
+          21 guias práticos. 6 áreas completas. Processo do zero ao emprego.
+          Tudo o que você precisa para entrar no mercado de tech.
+        </p>
+      </div>
+
+      <!-- Preview bloqueado do roadmap -->
+      <div class="roadmap-preview">
+        <div class="roadmap-preview-header">
+          <span class="roadmap-preview-label">📍 Seu roadmap personalizado</span>
+          <span class="roadmap-locked-badge">🔒 Desbloqueie abaixo</span>
         </div>
-        <div class="roadmap-item">
-          <div class="roadmap-dot"></div>
-          <div><h4>Fase 2 — Projetos para portfólio</h4><p>3 projetos reais selecionados para impressionar recrutadores</p></div>
+        <div class="roadmap-steps-blur">
+          <div class="roadmap-step-item">
+            <div class="roadmap-step-num">01</div>
+            <div class="roadmap-step-content">
+              <strong>Fase 1 — Fundamentos (primeiros 30 dias)</strong>
+              <p>Bases sólidas da sua área com projetos práticos desde o dia 1</p>
+            </div>
+          </div>
+          <div class="roadmap-step-item">
+            <div class="roadmap-step-num">02</div>
+            <div class="roadmap-step-content">
+              <strong>Fase 2 — Projetos para portfólio</strong>
+              <p>3 projetos reais selecionados para impressionar recrutadores</p>
+            </div>
+          </div>
+          <div class="roadmap-step-item roadmap-blurred">
+            <div class="roadmap-step-num">03</div>
+            <div class="roadmap-step-content">
+              <strong>Fase 3 — Ferramentas dos profissionais</strong>
+              <p>████████████████████████████████████</p>
+            </div>
+          </div>
+          <div class="roadmap-step-item roadmap-blurred">
+            <div class="roadmap-step-num">04</div>
+            <div class="roadmap-step-content">
+              <strong>Fase 4 — Primeiro emprego em tech</strong>
+              <p>████████████████████████████████████</p>
+            </div>
+          </div>
         </div>
-        <div class="roadmap-item">
-          <div class="roadmap-dot"></div>
-          <div><h4>Fase 3 — Ferramentas usadas por profissionais</h4><p>Stack exata que o mercado valoriza e paga mais</p></div>
+      </div>
+
+      <!-- O que está incluído -->
+      <div class="included-section">
+        <h3 class="included-title">O que você recebe com o TechPath:</h3>
+        <div class="included-grid">
+          <div class="included-card">
+            <div class="included-icon">📚</div>
+            <div class="included-text">
+              <strong>21 guias em PDF</strong>
+              <span>Conteúdo completo das 6 áreas de tecnologia</span>
+            </div>
+          </div>
+          <div class="included-card">
+            <div class="included-icon">🗺️</div>
+            <div class="included-text">
+              <strong>Roadmap por área</strong>
+              <span>Frontend, Backend, Data Science, DevOps, Cybersecurity e UX</span>
+            </div>
+          </div>
+          <div class="included-card">
+            <div class="included-icon">💼</div>
+            <div class="included-text">
+              <strong>Guia de emprego completo</strong>
+              <span>Currículo, LinkedIn, vagas e como passar em entrevistas técnicas</span>
+            </div>
+          </div>
+          <div class="included-card">
+            <div class="included-icon">🛠️</div>
+            <div class="included-text">
+              <strong>Projetos para portfólio</strong>
+              <span>3 projetos reais por área — exatamente o que recrutadores pedem</span>
+            </div>
+          </div>
+          <div class="included-card">
+            <div class="included-icon">⚡</div>
+            <div class="included-text">
+              <strong>Acesso imediato</strong>
+              <span>Tudo disponível assim que o pagamento for confirmado</span>
+            </div>
+          </div>
+          <div class="included-card">
+            <div class="included-icon">♾️</div>
+            <div class="included-text">
+              <strong>Acesso vitalício</strong>
+              <span>Atualizações futuras inclusas sem custo adicional</span>
+            </div>
+          </div>
         </div>
-        <div class="roadmap-item">
-          <div class="roadmap-dot"></div>
-          <div><h4>Fase 4 — Como conseguir seu primeiro emprego em tech</h4><p>Currículo, LinkedIn, entrevistas técnicas e onde procurar vagas</p></div>
+      </div>
+
+      <!-- Para quem é -->
+      <div class="for-who">
+        <div class="for-who-col for-who-yes">
+          <h4>✅ Para você se...</h4>
+          <ul>
+            <li>Quer entrar em tech mas não sabe por onde começar</li>
+            <li>Está cansado de estudar sem direção e sem resultado</li>
+            <li>Precisa de projetos reais para montar portfólio</li>
+            <li>Quer um plano claro — não mais um curso aleatório</li>
+          </ul>
+        </div>
+        <div class="for-who-col for-who-no">
+          <h4>❌ Não é para você se...</h4>
+          <ul>
+            <li>Já é desenvolvedor sênior buscando conteúdo avançado</li>
+            <li>Prefere exclusivamente vídeo aulas longas</li>
+            <li>Não quer se comprometer com o processo</li>
+          </ul>
         </div>
       </div>
 
-      <!-- Overlay com CTA -->
-      <div class="locked-overlay">
-        <div class="locked-icon">🔒</div>
-        <div class="locked-title">Desbloqueie seu roadmap de carreira personalizado</div>
-        <p class="locked-sub">Tudo o que você precisa para sair do zero e entrar no mercado de tecnologia em até 6 meses.</p>
+      <!-- Prova social -->
+      <div class="social-proof-new">
+        <div class="social-proof-avatars">
+          <span>👩‍💻</span><span>👨‍💻</span><span>👩‍💻</span><span>👨‍💻</span><span>👩‍💻</span>
+        </div>
+        <div class="social-proof-copy">
+          <strong>+300 pessoas</strong> já acessaram o plano de carreira completo
+          <span>e começaram sua jornada em tecnologia esta semana</span>
+        </div>
       </div>
-    </div>
 
-    <!-- BENEFÍCIOS DO PLANO — MELHORIA 3
-         Lista de entregáveis que aumentam o valor percebido do produto.
-    -->
-    <div class="plan-benefits">
-      <div class="plan-benefits-title">O que você recebe no plano completo:</div>
-      <div class="plan-benefit-item">
-        <span class="plan-check">✔</span>
-        <span>Roadmap completo de aprendizado para a sua área</span>
+      <!-- Preço e urgência -->
+      <div class="price-block">
+        <div class="urgency-banner">
+          ⚡ Preço de lançamento — válido por tempo limitado
+        </div>
+        <div class="price-display">
+          <div class="price-from">
+            <span class="price-label">De</span>
+            <span class="price-old-new">R$ 127</span>
+          </div>
+          <div class="price-to">
+            <span class="price-label">Por apenas</span>
+            <div class="price-main">
+              <span class="price-currency">R$</span>
+              <span class="price-value">67</span>
+            </div>
+            <span class="price-period">acesso vitalício</span>
+          </div>
+        </div>
+        <p class="price-note">
+          Equivale a <strong>R$ 3,19 por guia</strong> — menos que um café.
+        </p>
       </div>
-      <div class="plan-benefit-item">
-        <span class="plan-check">✔</span>
-        <span>Ideias de projetos para portfólio que chamam atenção de recrutadores</span>
-      </div>
-      <div class="plan-benefit-item">
-        <span class="plan-check">✔</span>
-        <span>Ferramentas e recursos recomendados por profissionais da área</span>
-      </div>
-      <div class="plan-benefit-item">
-        <span class="plan-check">✔</span>
-        <span>Plano de estudos de 6 meses com metas semanais</span>
-      </div>
-      <div class="plan-benefit-item">
-        <span class="plan-check">✔</span>
-        <span>Guia passo a passo para conseguir seu primeiro emprego em tech</span>
-      </div>
-    </div>
 
-    <!-- PROVA SOCIAL — MELHORIA 5 -->
-    <div class="social-proof">
-      <span class="social-proof-icon">👥</span>
-      <div class="social-proof-text">
-        <strong>+300 pessoas</strong> acessaram o plano de carreira completo essa semana.
+      <!-- CTA principal -->
+      <a href="https://pay.kiwify.com.br/bG7j29x" target="_blank" rel="noopener" class="btn-sales-cta">
+        🚀 Quero meu plano de carreira em tech
+        <span class="btn-sales-sub">Acesso imediato · R$ 67 · Garantia de 7 dias</span>
+      </a>
+
+      <!-- Garantia -->
+      <div class="guarantee-block">
+        <div class="guarantee-icon">🛡️</div>
+        <div class="guarantee-text">
+          <strong>Garantia total de 7 dias</strong>
+          <p>Se por qualquer motivo você não ficar satisfeito, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+        </div>
       </div>
-    </div>
 
-    <!-- URGÊNCIA -->
-    <div class="urgency-box">
-      <span class="urgency-icon">⚡</span>
-      <div class="urgency-text">
-        <h4>Oferta especial — hoje</h4>
-        <p>Garanta o seu plano antes que o preço volte ao valor original.</p>
+      <!-- Pagamento seguro -->
+      <div class="payment-trust">
+        <span>🔒 Pagamento 100% seguro</span>
+        <span>💳 Cartão, Pix ou Boleto</span>
+        <span>⚡ Acesso imediato</span>
       </div>
-    </div>
 
-    <!-- PREÇO -->
-    <div class="price-row">
-      <span class="price-old">R$ 97</span>
-      <span class="price-new">R$ 47</span>
-      <span class="price-period">/ acesso vitalício</span>
-    </div>
+      <!-- FAQ -->
+      <div class="faq-section">
+        <h3 class="faq-title">Perguntas frequentes</h3>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Preciso ter conhecimento prévio em programação?</summary>
+            <p>Não. O TechPath foi desenvolvido para quem está começando do zero. Cada módulo começa pelos fundamentos e evolui gradualmente até projetos reais.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Como funciona o acesso após a compra?</summary>
+            <p>Após a confirmação do pagamento você recebe acesso imediato à área de membros com todos os 6 módulos e os 21 guias em PDF para baixar.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Por quanto tempo tenho acesso?</summary>
+            <p>Acesso vitalício. Tudo que for atualizado no futuro você recebe automaticamente, sem nenhum custo adicional.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Posso acessar pelo celular?</summary>
+            <p>Sim. A área de membros funciona em qualquer dispositivo. Os PDFs podem ser baixados para leitura offline quando quiser.</p>
+          </details>
+          <details class="faq-item">
+            <summary>E se eu não gostar?</summary>
+            <p>7 dias de garantia total. Se não ficar satisfeito, basta entrar em contato e devolvemos 100% do valor pago, sem perguntas.</p>
+          </details>
+        </div>
+      </div>
 
-    <!-- BOTÃO DE COMPRA -->
-    <a href="https://pay.kiwify.com.br/bG7j29x" target="_blank" rel="noopener" class="btn btn-unlock">
-      🚀 Ver Meu Roadmap Completo
-    </a>
-    <p class="guarantee">🛡 Garantia de 7 dias · Pagamento 100% seguro · Acesso imediato</p>
+      <!-- CTA final -->
+      <a href="https://pay.kiwify.com.br/bG7j29x" target="_blank" rel="noopener" class="btn-sales-cta btn-sales-final">
+        Começar agora — R$ 67
+        <span class="btn-sales-sub">🛡️ Garantia de 7 dias · Acesso imediato</span>
+      </a>
+
+    </div>
+    <!-- ── FIM DA SEÇÃO DE VENDAS ─────────────── -->
 
     <!-- Anúncio final resultado -->
     <div class="ad-slot" aria-label="Publicidade" style="margin-top:40px;">Publicidade</div>
@@ -313,9 +453,6 @@
     <div class="text-center mt-md" style="margin-bottom: 48px;">
       <button class="btn btn-secondary" onclick="restartQuiz()">↩ Refazer o teste</button>
     </div>
-
-  </div>
-</div>
 
 
 <!-- =============================================

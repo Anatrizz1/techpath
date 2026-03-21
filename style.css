@@ -810,3 +810,475 @@ footer {
   .score-label { width: 80px; font-size: .78rem; }
   .price-new { font-size: 1.8rem; }
 }
+
+/* =============================================
+   SEÇÃO DE VENDAS — adicione ao final do style.css
+============================================= */
+
+/* ── Transição / Bridge ─────────────────────── */
+.sales-bridge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0 40px;
+}
+.sales-bridge-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.sales-bridge-text {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--purple-lt);
+  white-space: nowrap;
+}
+
+/* ── Hero de vendas ─────────────────────────── */
+.sales-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.sales-tag {
+  display: inline-block;
+  background: rgba(124,58,237,.15);
+  border: 1px solid rgba(124,58,237,.3);
+  color: var(--purple-lt);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+.sales-headline {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.sales-headline em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--purple-lt), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sales-sub {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Roadmap preview ────────────────────────── */
+.roadmap-preview {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.roadmap-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: rgba(124,58,237,.08);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.roadmap-preview-label {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--purple-lt);
+}
+.roadmap-locked-badge {
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(245,158,11,.1);
+  border: 1px solid rgba(245,158,11,.25);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.roadmap-steps-blur {
+  padding: 8px 0;
+}
+.roadmap-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  transition: background .2s;
+}
+.roadmap-step-item:last-child { border-bottom: none; }
+.roadmap-step-item:hover { background: rgba(255,255,255,.02); }
+.roadmap-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(124,58,237,.2);
+  border: 1px solid rgba(124,58,237,.3);
+  color: var(--purple-lt);
+  font-size: .75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.roadmap-step-content strong {
+  display: block;
+  font-size: .9rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.roadmap-step-content p {
+  font-size: .8rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+.roadmap-blurred {
+  filter: blur(4px);
+  user-select: none;
+  pointer-events: none;
+  opacity: .5;
+}
+
+/* ── O que está incluído ────────────────────── */
+.included-section {
+  margin-bottom: 40px;
+}
+.included-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.included-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  transition: border-color .2s, transform .2s;
+}
+.included-card:hover {
+  border-color: rgba(124,58,237,.4);
+  transform: translateY(-2px);
+}
+.included-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.included-text strong {
+  display: block;
+  font-size: .9rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.included-text span {
+  font-size: .8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ── Para quem é ────────────────────────────── */
+.for-who {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+@media (max-width: 560px) {
+  .for-who { grid-template-columns: 1fr; }
+}
+.for-who-col {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 20px;
+}
+.for-who-yes { border: 1px solid rgba(16,185,129,.25); }
+.for-who-no  { border: 1px solid rgba(239,68,68,.15); }
+.for-who-col h4 {
+  font-size: .85rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.for-who-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.for-who-col ul li {
+  font-size: .82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding-left: 4px;
+}
+
+/* ── Prova social ───────────────────────────── */
+.social-proof-new {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(16,185,129,.06);
+  border: 1px solid rgba(16,185,129,.2);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 32px;
+}
+.social-proof-avatars {
+  display: flex;
+  font-size: 1.4rem;
+  letter-spacing: -4px;
+  flex-shrink: 0;
+}
+.social-proof-copy {
+  font-size: .85rem;
+  line-height: 1.4;
+}
+.social-proof-copy strong {
+  color: #10b981;
+  display: block;
+  font-size: .95rem;
+}
+.social-proof-copy span {
+  color: var(--text-muted);
+}
+
+/* ── Bloco de preço ─────────────────────────── */
+.price-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.urgency-banner {
+  background: rgba(245,158,11,.12);
+  border-bottom: 1px solid rgba(245,158,11,.2);
+  color: var(--accent);
+  font-size: .8rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 20px;
+  letter-spacing: .03em;
+}
+.price-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 28px 24px 20px;
+  flex-wrap: wrap;
+}
+.price-from, .price-to {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.price-label {
+  font-size: .7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-muted);
+}
+.price-old-new {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  opacity: .6;
+}
+.price-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  line-height: 1;
+}
+.price-currency {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--purple-lt);
+  margin-top: 6px;
+}
+.price-value {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+.price-period {
+  font-size: .75rem;
+  color: var(--text-muted);
+}
+.price-note {
+  text-align: center;
+  font-size: .8rem;
+  color: var(--text-muted);
+  padding: 0 20px 20px;
+  margin: 0;
+}
+.price-note strong { color: var(--purple-lt); }
+
+/* ── CTA principal ──────────────────────────── */
+.btn-sales-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, var(--purple) 0%, #6d28d9 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: 14px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, filter .2s;
+  box-shadow: 0 8px 32px rgba(124,58,237,.4);
+  margin-bottom: 20px;
+  letter-spacing: .01em;
+}
+.btn-sales-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(124,58,237,.55);
+  filter: brightness(1.08);
+}
+.btn-sales-cta:active { transform: translateY(-1px); }
+.btn-sales-sub {
+  font-size: .75rem;
+  font-weight: 500;
+  opacity: .85;
+  letter-spacing: .02em;
+}
+.btn-sales-final {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  box-shadow: 0 8px 32px rgba(16,185,129,.35);
+  margin-top: 8px;
+}
+.btn-sales-final:hover {
+  box-shadow: 0 16px 48px rgba(16,185,129,.5);
+}
+
+/* ── Garantia ───────────────────────────────── */
+.guarantee-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(16,185,129,.05);
+  border: 1px solid rgba(16,185,129,.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.guarantee-icon { font-size: 2rem; flex-shrink: 0; }
+.guarantee-text strong {
+  display: block;
+  color: #10b981;
+  font-size: .95rem;
+  margin-bottom: 6px;
+}
+.guarantee-text p {
+  font-size: .82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Selos de pagamento ─────────────────────── */
+.payment-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.03);
+}
+.payment-trust span {
+  font-size: .78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ── FAQ ────────────────────────────────────── */
+.faq-section { margin-bottom: 40px; }
+.faq-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.faq-list { display: flex; flex-direction: column; gap: 8px; }
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.faq-item[open] { border-color: rgba(124,58,237,.35); }
+.faq-item summary {
+  padding: 16px 20px;
+  font-size: .9rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.2rem;
+  color: var(--purple-lt);
+  font-weight: 300;
+  transition: transform .2s;
+}
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+.faq-item p {
+  padding: 0 20px 16px;
+  font-size: .85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
